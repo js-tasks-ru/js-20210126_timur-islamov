@@ -7,13 +7,15 @@
 export function sortStrings(arr, param = 'asc') {
   const tmp = [...arr];
 
-  tmp.sort((a, b) => a.localeCompare(b, 'ru-en', {
+  let comparator = (a, b) => a.localeCompare(b, 'ru-en', {
     caseFirst: 'upper'
-  }));
+  });
 
   if (param === 'desc') {
-    tmp.reverse();
+    comparator = (a, b) => b.localeCompare(a, 'ru-en', {
+      caseFirst: 'upper'
+    });
   }
 
-  return tmp;
+  return tmp.sort(comparator);
 }
