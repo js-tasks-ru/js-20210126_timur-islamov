@@ -5,5 +5,13 @@
  * @returns {object} - returns the new object
  */
 export const omit = (obj, ...fields) => {
+  const tmp = {};
 
+  for (const prop in obj) {
+    if (!fields.includes(prop)) {
+      tmp[prop] = obj[prop];
+    }
+  }
+
+  return tmp;
 };
